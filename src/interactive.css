@@ -1,0 +1,119 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+      to bottom,
+      rgb(55, 153, 219),
+      rgb(179, 200, 228),
+      rgb(255, 255, 255)
+    );
+    width: 100vw;
+    height: 100vh;
+    margin: 0%;
+    color: var(--light-text);
+  }
+  
+  body.dark-mode {
+    background: linear-gradient(
+      to bottom,
+      #000000,
+      rgb(11, 4, 51),
+      rgb(10, 44, 88) /* rgb(55, 153, 219) */
+    );
+    background-color: var(--light-text);
+    color: var(--dark-text);
+  }
+
+  /*Loading screen with rotating icon*/
+
+#loading-screen {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-light);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transform: none;
+  }
+  .dark-mode #loading-screen {
+    background-color: var(--primary-dark);
+  }
+  #loading-animation {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #rotate-icon {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    animation: rotation calc(120s) infinite ease-in;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(9600deg);
+    }
+  }
+  
+  #loading-texts {
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    bottom: 2%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .loading-text {
+    width: fit-content;
+    position: absolute;
+    display: none;
+    align-self: center;
+  }
+
+  
+
+  canvas {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    outline: none;
+  }
+  
+  canvas.change {
+    width: 100%;
+  }
+  
+  div#popups {
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    right: 100px;
+    top: 100px;
+  }
+  
+  div#popups div {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+    z-index: 70;
+    display: none;
+    border-radius: 25px;
+    padding: 30px;
+    position: absolute;
+    height: fit-content;
+    width: inherit;
+  }
+  
+  .dark-mode div#popups div {
+    background-color: var(--dark-aside);
+    color: var(--dark-text);
+  }

@@ -1,0 +1,31 @@
+name: Deploy-Page
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: [ubuntu-latest]
+
+    strategy:
+      matrix:
+        version: [18]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Node installieren & bauen
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.version}}
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{secrets.ACCESS_TOKEN}}
+          branch: gh-pages
+          folder: dist
